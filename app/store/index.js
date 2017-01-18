@@ -1,5 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
+import comments from '../reducers/comments'
 
 const logger = store => next => action => {
   console.group(action.type)
@@ -10,7 +11,7 @@ const logger = store => next => action => {
   return result
 }
 
-const reducer = combineReducers({})
+const reducer = combineReducers({ comments })
 const middlewares = applyMiddleware(thunk, logger)
 const store = createStore(reducer, middlewares)
 
